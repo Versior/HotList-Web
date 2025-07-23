@@ -18,7 +18,6 @@
             <p>
               今日热榜是聚合热榜热搜平台，汇集了各大网站的热榜信息，包括微博热搜、今日头条、知乎日报、澎湃新闻、虎扑步行街、36氪、哔哩哔哩热榜，知乎、IT资讯、虎嗅网、人人都是产品经理、百度、抖音热点豆瓣小组精选等。
               <a class="git-link" href="https://w.20000424.xyz/" target="_blank">遇事开心-2025年秋</a>
-              ，可快速接入热榜数据，助力追踪全网热点。
             </p>
             <p style="font-weight: bold">个人博客: <a class="git-link" href="https://versior.xyz/" target="_blank">废话记录仪</a></p>
           </AlertDescription>
