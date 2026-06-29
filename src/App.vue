@@ -2,24 +2,15 @@
   <div class="app-wrapper">
     <a href="#main-content" class="skip-link">跳到主要内容</a>
 
-    <!-- Memphis 装饰几何形状 -->
-    <div class="memphis-shape shape-circle" style="top:120px;left:3%;width:60px;height:60px;" aria-hidden="true"></div>
-    <div class="memphis-shape shape-triangle" style="top:300px;right:5%;" aria-hidden="true"></div>
-    <div class="memphis-shape shape-square" style="top:500px;left:6%;width:40px;height:40px;" aria-hidden="true"></div>
-    <div class="memphis-shape shape-squiggle" style="top:80px;right:12%;width:80px;" aria-hidden="true"></div>
-    <div class="memphis-shape shape-circle" style="bottom:200px;right:8%;width:35px;height:35px;background:#FF6B9D;" aria-hidden="true"></div>
-    <div class="memphis-shape" style="bottom:400px;left:4%;width:12px;height:12px;border-radius:50%;background:#FFE600;opacity:0.35;" aria-hidden="true"></div>
-    <div class="memphis-shape shape-squiggle" style="bottom:600px;right:15%;width:60px;opacity:0.12;" aria-hidden="true"></div>
-
     <section class="www_vvhan_com" aria-label="今日热榜">
       <header role="banner">
-        <div class="main">
+        <div class="header-inner">
           <div class="logo">
-            <div class="logo-icon" aria-hidden="true">
-              <span class="logo-dot"></span>
-              <span class="logo-dot"></span>
-              <span class="logo-dot"></span>
-            </div>
+            <svg class="logo-line-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18" />
+              <path d="M9 3v18" />
+            </svg>
             <span>全网热门资讯与实时热榜</span>
           </div>
           <h2>提供各站热榜热搜聚合</h2>
@@ -30,38 +21,29 @@
             <MoonIcon v-else aria-hidden="true" />
           </button>
         </div>
-        <!-- 头部装饰条 -->
-        <div class="header-stripe" aria-hidden="true"></div>
       </header>
 
       <main id="main-content" role="main">
-        <!-- Memphis 公告板块 -->
+        <!-- 公告板块：描边风格 -->
         <aside class="announcement-section" aria-label="站点公告">
           <div class="announcement-card">
-            <!-- 装饰角标 -->
-            <div class="announcement-corner" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
             <div class="announcement-header">
-              <div class="announcement-icon-wrap">
-                <DrawingPinIcon aria-hidden="true" />
-              </div>
+              <DrawingPinIcon aria-hidden="true" class="announcement-icon" />
               <h3 class="announcement-title">Welcome to Kaixin Hub</h3>
-              <a class="announcement-link announcement-link-header"
-                href="https://axoxe.com/" target="_blank" rel="noopener noreferrer"
-                style="background:#FFE600;border:2px solid #1a1a1a;color:#1a1a1a;margin-left:10px;padding:2px 10px;font-size:13px;font-weight:700;text-decoration:none;display:inline-block!important;white-space:nowrap;line-height:1.5;">
+              <a class="announcement-link" href="https://axoxe.com/" target="_blank" rel="noopener noreferrer">
                 多云禁止悲观丨KaiXin
               </a>
-              <span class="announcement-badge">HOT</span>
             </div>
             <div class="announcement-body">
-              <p>
+              <p class="announcement-connector">
+                <span class="connector-dot" aria-hidden="true"></span>
                 今日热榜是聚合热榜热搜平台，汇集了各大网站的热榜信息，包括微博热搜、今日头条、知乎日报、澎湃新闻、虎扑步行街、36氪、哔哩哔哩热榜，知乎、IT资讯、虎嗅网、人人都是产品经理、百度、抖音热点豆瓣小组精选等。
               </p>
             </div>
-            <!-- 底部装饰点 -->
-            <div class="announcement-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span>
+            <div class="announcement-footer">
+              <span class="line-dot"></span>
+              <span class="line-dot"></span>
+              <span class="line-dot"></span>
             </div>
           </div>
         </aside>
@@ -72,9 +54,7 @@
       </main>
 
       <footer role="contentinfo">
-        <div class="footer-stripe" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
+        <div class="footer-divider"><span></span></div>
         <p><img src="./assets/svg/ing.svg" alt="" /></p>
         <p>
           <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/framework.svg" alt="Cloudflare Pages" /></a>

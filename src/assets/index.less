@@ -3,44 +3,28 @@
 .www_vvhan_com {
   position: relative;
   z-index: 1;
-  padding: 72px 0 0;
+  padding: 68px 0 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 1720px;
-  height: max-content;
 
-  /* ===== Header: 黄色实体背景 ===== */
+  /* ===== Header: 白底 + 底部描边 ===== */
   & > header {
     position: fixed;
     left: 0;
     top: 0;
-    box-sizing: border-box;
     width: 100%;
-    height: max-content;
-    background: var(--memphis-yellow);
-    border-bottom: 4px solid var(--memphis-black);
+    height: 56px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--stroke-border);
     font-family: 'HarmonyOS Sans SC', sans-serif !important;
     z-index: 6;
 
-    .header-stripe {
-      height: 6px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--memphis-black) 0px,
-        var(--memphis-black) 20px,
-        transparent 20px,
-        transparent 28px,
-        var(--memphis-pink) 28px,
-        var(--memphis-pink) 48px,
-        transparent 48px,
-        transparent 56px
-      );
-    }
-
-    .main {
+    .header-inner {
       box-sizing: border-box;
       padding: 0 20px;
       margin: 0 auto;
@@ -48,68 +32,42 @@
       align-items: center;
       width: 100%;
       max-width: 1666px;
-      height: 66px;
+      height: 100%;
 
-      & > .logo {
+      .logo {
         display: flex;
         align-items: center;
-        gap: 14px;
-        width: max-content;
-        height: 100%;
-        font-size: 22px;
-        font-weight: 900;
-        color: var(--memphis-black);
-        letter-spacing: 2px;
-        text-transform: uppercase;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--stroke-black);
+        letter-spacing: 0.04em;
 
-        .logo-icon {
-          display: flex;
-          gap: 4px;
-          align-items: center;
-          height: 24px;
-        }
-        .logo-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 0;
-          display: inline-block;
-          &:nth-child(1) { background: var(--memphis-black); width: 12px; height: 12px; border-radius: 50%; }
-          &:nth-child(2) { background: var(--memphis-pink); width: 10px; height: 10px; transform: rotate(45deg); }
-          &:nth-child(3) { background: var(--memphis-cyan); width: 12px; height: 12px; }
-        }
+        .logo-line-icon { flex-shrink: 0; }
       }
 
       & > h2 {
         margin-left: auto;
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--memphis-black);
-        opacity: 0.7;
-        letter-spacing: 0.5px;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--stroke-gray);
+        letter-spacing: 0.06em;
       }
 
       .theme-toggle {
-        margin-left: 14px;
+        margin-left: 12px;
+        width: 34px;
+        height: 34px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: 3px solid var(--memphis-black);
-        background: var(--memphis-white);
+        border: 1px solid var(--stroke-border);
+        background: transparent;
         cursor: pointer;
-        transition: transform 0.15s ease, background 0.15s ease;
+        transition: border-color 0.15s;
 
-        & > svg {
-          width: 20px;
-          height: 20px;
-          color: var(--memphis-black);
-        }
-
-        &:hover {
-          background: var(--memphis-cyan);
-          transform: rotate(-8deg) scale(1.05);
-        }
+        & > svg { width: 16px; height: 16px; color: var(--stroke-dark); }
+        &:hover { border-color: var(--stroke-dark); }
       }
     }
   }
@@ -122,151 +80,90 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
 
-    /* ===== 公告板块 Memphis 风格 ===== */
+    /* ===== 公告板块：描边风格 ===== */
     .announcement-section {
-      margin: 16px 0 36px;
+      margin: 16px 0 32px;
       width: 100%;
-      position: relative;
 
       .announcement-card {
         position: relative;
-        padding: 24px 28px;
-        background: var(--memphis-white);
-        border: 3px solid var(--memphis-black);
-        box-shadow: 6px 6px 0 var(--memphis-black);
-        overflow: hidden;
-      }
-
-      /* 装饰角标 */
-      .announcement-corner {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        gap: 4px;
-        padding: 8px;
-
-        span {
-          width: 8px;
-          height: 8px;
-          display: block;
-          &:nth-child(1) { background: var(--memphis-pink); border-radius: 50%; }
-          &:nth-child(2) { background: var(--memphis-cyan); transform: rotate(45deg); }
-          &:nth-child(3) { background: var(--memphis-yellow); border: 1.5px solid var(--memphis-black); }
-        }
-      }
-
-      .announcement-dots {
-        position: absolute;
-        bottom: 8px;
-        right: 16px;
-        display: flex;
-        gap: 6px;
-
-        span {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--memphis-black);
-          opacity: 0.12;
-        }
+        padding: 20px 24px 16px;
+        border: 1px solid var(--stroke-border);
+        background: var(--stroke-card);
       }
 
       .announcement-header {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 14px;
-        padding-bottom: 14px;
-        border-bottom: 3px solid var(--memphis-black);
+        gap: 10px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed var(--stroke-light);
 
-        .announcement-icon-wrap {
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--memphis-yellow);
-          border: 2px solid var(--memphis-black);
-
-          svg {
-            width: 20px;
-            height: 20px;
-            color: var(--memphis-black);
-          }
+        .announcement-icon {
+          width: 18px; height: 18px;
+          color: var(--stroke-gray);
+          flex-shrink: 0;
         }
 
         .announcement-title {
           margin: 0;
           font-family: 'HarmonyOS Sans SC Black', sans-serif !important;
-          font-size: 20px;
-          font-weight: 900;
-          color: var(--memphis-black);
-          line-height: 1.2;
-          letter-spacing: 1px;
+          font-size: 17px;
+          font-weight: 700;
+          color: var(--stroke-black);
+          letter-spacing: 0.03em;
         }
 
-        .announcement-badge {
+        .announcement-link {
           margin-left: auto;
-          padding: 3px 12px;
-          font-size: 11px;
-          font-weight: 900;
-          color: var(--memphis-white);
-          background: var(--memphis-black);
-          letter-spacing: 2px;
-          line-height: 1.4;
+          font-size: 12px;
+          padding: 2px 10px;
+          border: 1px solid var(--stroke-border);
+          color: var(--stroke-accent);
+          text-decoration: none;
+          letter-spacing: 0.03em;
+          transition: background 0.12s, border-color 0.12s;
+
+          &:hover {
+            background: var(--stroke-accent-light);
+            border-color: var(--stroke-accent);
+          }
+          &:focus-visible {
+            outline: 2px solid var(--stroke-accent);
+            outline-offset: 2px;
+          }
         }
       }
 
       .announcement-body {
-        font-size: 15px;
-        line-height: 1.8;
-        color: var(--memphis-black);
+        font-size: 14px;
+        line-height: 1.7;
+        color: #444;
 
-        p {
-          margin: 0 0 8px;
-          &:last-child { margin-bottom: 0; }
-        }
+        .announcement-connector {
+          margin: 0;
+          padding-left: 16px;
+          position: relative;
 
-        .announcement-blog {
-          font-weight: 700;
-          margin-top: 12px;
-          padding-top: 12px;
-          border-top: 2px dashed var(--memphis-black);
-        }
-
-        .announcement-link {
-          color: var(--memphis-black);
-          font-weight: 700;
-          text-decoration: none;
-          background: var(--memphis-yellow);
-          padding: 1px 6px;
-          border: 2px solid var(--memphis-black);
-          transition: transform 0.1s ease, box-shadow 0.1s ease;
-          display: inline-block;
-
-          &:hover {
-            background: var(--memphis-pink);
-            color: var(--memphis-white);
-          }
-          &:focus-visible {
-            outline: 3px solid var(--memphis-pink);
-            outline-offset: 2px;
+          .connector-dot {
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px; height: 6px;
+            border: 1.5px solid var(--stroke-accent);
+            border-radius: 50%;
+            background: transparent;
           }
         }
+      }
 
-        /* 头部内的链接 */
-        .announcement-link-header {
-          margin-left: 8px;
-          font-size: 13px;
-          padding: 2px 10px;
-          white-space: nowrap;
-          background: var(--memphis-yellow) !important;
-          border: 2px solid var(--memphis-black) !important;
-          color: var(--memphis-black) !important;
-        }
+      .announcement-footer {
+        margin-top: 10px;
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
       }
     }
 
@@ -276,7 +173,7 @@
       flex: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px 16px;
+      gap: 20px;
       width: 100%;
       height: max-content;
       outline: none;
@@ -286,26 +183,22 @@
   /* ===== Footer ===== */
   & > footer {
     box-sizing: border-box;
-    padding: 40px 0 20px;
+    padding: 32px 0 20px;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: max-content;
-    margin-top: 10px;
 
-    .footer-stripe {
-      display: flex;
-      gap: 0;
+    .footer-divider {
       width: 100%;
-      height: 8px;
+      height: 1px;
+      background: var(--stroke-border);
       margin-bottom: 24px;
 
       span {
-        flex: 1;
-        &:nth-child(1) { background: var(--memphis-yellow); }
-        &:nth-child(2) { background: var(--memphis-pink); }
-        &:nth-child(3) { background: var(--memphis-cyan); }
-        &:nth-child(4) { background: var(--memphis-black); }
+        display: block;
+        width: 60px;
+        height: 1px;
+        background: var(--stroke-accent);
       }
     }
 
@@ -315,31 +208,18 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      width: 100%;
-      height: max-content;
+      gap: 8px;
 
       & > a {
-        width: max-content;
-        height: 24px;
         display: flex;
         align-items: center;
         padding: 4px 8px;
-        border: 2px solid var(--memphis-black);
-        background: var(--memphis-white);
-        transition: transform 0.15s ease, background 0.15s ease;
+        border: 1px solid var(--stroke-border);
+        transition: border-color 0.12s;
+        text-decoration: none;
 
-        &:hover {
-          background: var(--memphis-yellow);
-          transform: translateY(-2px) rotate(-1deg);
-        }
-
-        & > img {
-          height: 18px;
-          max-height: 18px;
-          width: auto;
-          object-fit: contain;
-        }
+        &:hover { border-color: var(--stroke-accent); }
+        & > img { height: 16px; max-height: 16px; width: auto; object-fit: contain; }
       }
     }
   }
@@ -348,85 +228,47 @@
 // ===== 暗黑模式 =====
 .dark .www_vvhan_com {
   & > header {
-    background: var(--memphis-black);
-    border-bottom-color: var(--memphis-pink);
+    background: rgba(20,20,22,0.92);
+    border-bottom-color: #333;
 
-    .header-stripe {
-      background: repeating-linear-gradient(
-        90deg,
-        var(--memphis-pink) 0px,
-        var(--memphis-pink) 20px,
-        transparent 20px,
-        transparent 28px,
-        var(--memphis-cyan) 28px,
-        var(--memphis-cyan) 48px,
-        transparent 48px,
-        transparent 56px
-      );
-    }
-
-    .main {
-      .logo { color: var(--memphis-yellow); }
-      & > h2 { color: rgba(255,255,255,0.6); }
+    .header-inner {
+      .logo { color: #ddd; }
+      & > h2 { color: #777; }
       .theme-toggle {
-        border-color: var(--memphis-pink);
-        background: #2a2a3e;
-        & > svg { color: var(--memphis-yellow); }
-        &:hover { background: var(--memphis-pink); }
+        border-color: #444;
+        & > svg { color: #aaa; }
+        &:hover { border-color: #888; }
       }
     }
   }
 
   & > main {
     .announcement-section {
-      .announcement-card {
-        background: #2a2a3e;
-        border-color: var(--memphis-pink);
-        box-shadow: 6px 6px 0 var(--memphis-pink);
-      }
+      .announcement-card { background: #1a1a1e; border-color: #333; }
 
       .announcement-header {
-        border-bottom-color: var(--memphis-pink);
-        .announcement-icon-wrap {
-          background: var(--memphis-pink);
-          svg { color: #fff; }
-        }
-        .announcement-title { color: var(--memphis-yellow); }
-        .announcement-badge {
-          background: var(--memphis-pink);
-          color: #fff;
+        border-bottom-color: #333;
+        .announcement-icon { color: #666; }
+        .announcement-title { color: #ccc; }
+        .announcement-link {
+          border-color: #444;
+          color: #60a5fa;
+          &:hover { background: rgba(37,99,235,0.1); border-color: #60a5fa; }
         }
       }
 
       .announcement-body {
-        color: rgba(255,255,255,0.85);
-        .announcement-blog { border-top-color: var(--memphis-pink); }
-        .announcement-link {
-          color: var(--memphis-black);
-          background: var(--memphis-yellow);
-          &:hover {
-            background: var(--memphis-pink);
-            color: #fff;
-          }
-        }
+        color: #999;
+        .announcement-connector .connector-dot { border-color: #60a5fa; }
       }
     }
   }
 
   & > footer {
-    .footer-stripe {
-      span {
-        &:nth-child(1) { background: var(--memphis-pink); }
-        &:nth-child(2) { background: var(--memphis-cyan); }
-        &:nth-child(3) { background: #ffd700; }
-        &:nth-child(4) { background: var(--memphis-blue); }
-      }
-    }
+    .footer-divider { background: #333; span { background: #60a5fa; } }
     & > p > a {
-      border-color: rgba(255,255,255,0.2);
-      background: #2a2a3e;
-      filter: brightness(1.3);
-      &:hover { background: var(--memphis-pink); }
+      border-color: #333;
+      &:hover { border-color: #60a5fa; }
     }
   }
 }
