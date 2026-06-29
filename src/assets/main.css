@@ -2,100 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+/* ===== Memphis 80s 色彩系统 ===== */
+:root {
+  --memphis-yellow: #FFE600;
+  --memphis-pink: #FF6B9D;
+  --memphis-cyan: #00D4D4;
+  --memphis-blue: #2B5BFF;
+  --memphis-orange: #FF8C00;
+  --memphis-red: #FF3366;
+  --memphis-black: #1a1a1a;
+  --memphis-cream: #f5efe6;
+  --memphis-white: #ffffff;
+  --memphis-gray: #e8e2d8;
+}
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+/* ========== WCAG: Skip Link ========== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--memphis-black);
+  color: var(--memphis-yellow);
+  font-size: 16px;
+  font-weight: 700;
+  border: 3px solid var(--memphis-yellow);
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--memphis-pink);
+  outline-offset: 2px;
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+/* ========== WCAG: Focus Indicators ========== */
+*:focus-visible {
+  outline: 3px solid var(--memphis-black);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-
-    --ring: 224 71.4% 4.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-
-    --ring: 216 12.2% 83.9%;
+/* ========== WCAG: Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 3px;
-  height: 5.88px;
-}
-
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb:hover {
-  background-color: #bdbdbd;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0 #fff;
-  background-color: transparent;
-}
-
+/* ===== Memphis 背景 ===== */
 body {
-  cursor: url('./default.cur'), default;
-  background: #f9f9f9;
+  background-color: var(--memphis-cream);
+  background-image:
+    /* 小圆点阵 */
+    radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px),
+    /* 更大的圆点 */
+    radial-gradient(circle, rgba(255,107,157,0.12) 2px, transparent 2px);
+  background-size: 40px 40px, 80px 80px;
+  background-position: 0 0, 20px 20px;
+  font-family: 'HarmonyOS Sans SC', sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--memphis-black);
 }
+
 body,
 #app {
   margin: 0;
@@ -105,6 +81,86 @@ body,
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: max-content;
+  min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* 暗黑模式 — 用深色背景 + 霓虹色 */
+.dark body {
+  background-color: #1a1a2e;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,107,157,0.08) 2px, transparent 2px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--memphis-black);
+  border-radius: 0;
+  border: 2px solid var(--memphis-cream);
+}
+::-webkit-scrollbar-track { background-color: transparent; }
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--memphis-pink);
+  border-color: #1a1a2e;
+}
+
+/* ===== Toast 弹窗 ===== */
+[data-radix-toast-viewport] {
+  position: fixed !important;
+}
+[role="status"] .group[role="alert"],
+div[role="alert"][data-state="open"] {
+  background: var(--memphis-white) !important;
+  border: 3px solid var(--memphis-black) !important;
+  box-shadow: 4px 4px 0 var(--memphis-black) !important;
+  border-radius: 0 !important;
+  color: var(--memphis-black) !important;
+}
+.dark div[role="alert"][data-state="open"] {
+  background: #2a2a3e !important;
+  border-color: var(--memphis-pink) !important;
+  box-shadow: 4px 4px 0 var(--memphis-pink) !important;
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* ===== 装饰几何形状 ===== */
+.memphis-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid var(--memphis-pink);
+  opacity: 0.3;
+}
+.shape-circle {
+  border-radius: 50%;
+  background: var(--memphis-cyan);
+  opacity: 0.2;
+}
+.shape-square {
+  background: var(--memphis-yellow);
+  opacity: 0.25;
+  transform: rotate(15deg);
+}
+.shape-squiggle {
+  width: 60px;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--memphis-black),
+    var(--memphis-black) 3px,
+    transparent 3px,
+    transparent 8px
+  );
+  border-radius: 4px;
+  opacity: 0.15;
+  transform: rotate(-5deg);
 }

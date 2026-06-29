@@ -1,55 +1,127 @@
 <template>
-  <section class="www_vvhan_com">
-    <header>
-      <div class="main">
-        <div class="logo">
-          <img src="https://q1.qlogo.cn/g?b=qq&nk=2983699759&s=640" />
-          <span>今日热榜</span>
+  <div class="app-wrapper">
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+
+    <!-- Memphis 装饰几何形状 -->
+    <div class="memphis-shape shape-circle" style="top:120px;left:3%;width:60px;height:60px;" aria-hidden="true"></div>
+    <div class="memphis-shape shape-triangle" style="top:300px;right:5%;" aria-hidden="true"></div>
+    <div class="memphis-shape shape-square" style="top:500px;left:6%;width:40px;height:40px;" aria-hidden="true"></div>
+    <div class="memphis-shape shape-squiggle" style="top:80px;right:12%;width:80px;" aria-hidden="true"></div>
+    <div class="memphis-shape shape-circle" style="bottom:200px;right:8%;width:35px;height:35px;background:#FF6B9D;" aria-hidden="true"></div>
+    <div class="memphis-shape" style="bottom:400px;left:4%;width:12px;height:12px;border-radius:50%;background:#FFE600;opacity:0.35;" aria-hidden="true"></div>
+    <div class="memphis-shape shape-squiggle" style="bottom:600px;right:15%;width:60px;opacity:0.12;" aria-hidden="true"></div>
+
+    <section class="www_vvhan_com" aria-label="今日热榜">
+      <header role="banner">
+        <div class="main">
+          <div class="logo">
+            <div class="logo-icon" aria-hidden="true">
+              <span class="logo-dot"></span>
+              <span class="logo-dot"></span>
+              <span class="logo-dot"></span>
+            </div>
+            <span>全网热门资讯与实时热榜</span>
+          </div>
+          <h2>提供各站热榜热搜聚合</h2>
+          <button class="theme-toggle" @click="toggleTheme"
+            :title="isDark ? '切换到亮色模式' : '切换到暗黑模式'"
+            :aria-label="isDark ? '切换到亮色模式' : '切换到暗黑模式'">
+            <SunIcon v-if="isDark" aria-hidden="true" />
+            <MoonIcon v-else aria-hidden="true" />
+          </button>
         </div>
-        <h2>提供各站热榜热搜聚合</h2>
-      </div>
-    </header>
-    <main>
-      <header>
-        <Alert>
-          <DrawingPinIcon />
-          <AlertTitle>开心公告</AlertTitle>
-          <AlertDescription>
-            <p>
-              今日热榜是聚合热榜热搜平台，汇集了各大网站的热榜信息，包括微博热搜、今日头条、知乎日报、澎湃新闻、虎扑步行街、36氪、哔哩哔哩热榜，知乎、IT资讯、虎嗅网、人人都是产品经理、百度、抖音热点豆瓣小组精选等。
-              <a class="git-link" href="https://w.20000424.xyz/" target="_blank">遇事开心-2025年秋</a>
-            </p>
-            <p style="font-weight: bold">个人博客: <a class="git-link" href="https://versior.xyz/" target="_blank">废话记录仪</a></p>
-          </AlertDescription>
-        </Alert>
+        <!-- 头部装饰条 -->
+        <div class="header-stripe" aria-hidden="true"></div>
       </header>
 
-      <section class="hotlist">
-        <ListItem v-for="i in hotlistKey" :key="i.name" :item="i" @refreshFn="refreshFn" />
-      </section>
-    </main>
-    <footer>
-      <p><img src="./assets/svg/ing.svg" /></p>
-      <p>
-        <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/framework.svg" /></a>
-        <a href="https://www.cloudflare.com/zh-cn/application-services/products/cdn/" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/cdn.svg" /></a>
-        <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/web.svg" /></a>
-        <a href="https://api.vvhan.com" target="_blank"><img src="./assets/svg/surppot.svg" /></a>
-      </p>
-    </footer>
-  </section>
-  <Toaster />
+      <main id="main-content" role="main">
+        <!-- Memphis 公告板块 -->
+        <aside class="announcement-section" aria-label="站点公告">
+          <div class="announcement-card">
+            <!-- 装饰角标 -->
+            <div class="announcement-corner" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="announcement-header">
+              <div class="announcement-icon-wrap">
+                <DrawingPinIcon aria-hidden="true" />
+              </div>
+              <h3 class="announcement-title">Welcome to Kaixin Hub</h3>
+              <a class="announcement-link announcement-link-header"
+                href="https://axoxe.com/" target="_blank" rel="noopener noreferrer"
+                style="background:#FFE600;border:2px solid #1a1a1a;color:#1a1a1a;margin-left:10px;padding:2px 10px;font-size:13px;font-weight:700;text-decoration:none;display:inline-block!important;white-space:nowrap;line-height:1.5;">
+                多云禁止悲观丨KaiXin
+              </a>
+              <span class="announcement-badge">HOT</span>
+            </div>
+            <div class="announcement-body">
+              <p>
+                今日热榜是聚合热榜热搜平台，汇集了各大网站的热榜信息，包括微博热搜、今日头条、知乎日报、澎湃新闻、虎扑步行街、36氪、哔哩哔哩热榜，知乎、IT资讯、虎嗅网、人人都是产品经理、百度、抖音热点豆瓣小组精选等。
+              </p>
+            </div>
+            <!-- 底部装饰点 -->
+            <div class="announcement-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </aside>
+
+        <section class="hotlist" aria-label="热榜列表">
+          <ListItem v-for="i in hotlistKey" :key="i.name" :item="i" @refreshFn="refreshFn" />
+        </section>
+      </main>
+
+      <footer role="contentinfo">
+        <div class="footer-stripe" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <p><img src="./assets/svg/ing.svg" alt="" /></p>
+        <p>
+          <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/framework.svg" alt="Cloudflare Pages" /></a>
+          <a href="https://www.cloudflare.com/zh-cn/application-services/products/cdn/" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/cdn.svg" alt="Cloudflare CDN" /></a>
+          <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/web.svg" alt="Vue.js" /></a>
+          <a href="https://api.vvhan.com" target="_blank"><img src="./assets/svg/surppot.svg" alt="API 支持" /></a>
+        </p>
+      </footer>
+    </section>
+    <Toaster />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import moment from 'moment'
-import { DrawingPinIcon } from '@radix-icons/vue'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { DrawingPinIcon, SunIcon, MoonIcon } from '@radix-icons/vue'
 import ListItem from '@/components/ListItem/ListItem.vue'
 import { Toaster } from '@/components/ui/toast'
 import { useToast } from '@/components/ui/toast/use-toast'
 const { toast } = useToast()
+
+// 暗黑模式
+const isDark = ref(false)
+
+const initTheme = () => {
+  const stored = localStorage.getItem('theme')
+  if (stored) {
+    isDark.value = stored === 'dark'
+  } else {
+    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+}
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+}
+watch(isDark, (val) => {
+  document.documentElement.classList.toggle('dark', val)
+}, { immediate: true })
+onMounted(() => {
+  initTheme()
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) isDark.value = e.matches
+  })
+})
+
 // 热榜列表
 const hotlistKey = ref<any[]>([
   { key: 'toutiao', name: '今日头条', sub: '热点', data: [] },
@@ -75,7 +147,7 @@ const vhInit = async () => {
   try {
     const res = await fetch('https://hot-api.vhan.eu.org/v2?type=all')
     await new Promise((r) => setTimeout(r, 666))
-    toast({ title: 'Init', description: '热榜获取成功' })
+    toast({ description: '🚀 全网热榜加载完成' })
     const { data } = await res.json()
     hotlistKey.value.forEach((i: any) => {
       const currentItem = data.find((item: any) => item.name == i.name && item.subtitle == i.sub)

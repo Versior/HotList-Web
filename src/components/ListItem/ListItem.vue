@@ -1,20 +1,24 @@
 <template>
-  <section class="list-item">
+  <section class="list-item" :aria-label="item.name + '热榜'">
     <header>
       <div class="l">
-        <img :src="reqImg(item.name)">
+        <img :src="reqImg(item.name)" :alt="item.name + '图标'" />
         <h3>{{ item.name }}</h3>
       </div>
-      <div class="r"><span>{{ item.sub }}</span></div>
+      <div class="r" aria-label="分类：{{ item.sub }}">{{ item.sub }}</div>
     </header>
     <main>
-      <section class="list" :class="{ active: item.data.length > 0 }">
-        <div class="main-item" v-for="i in item.data" :key="i.index">
-          <a :href="i.url" target="_blank"><i>{{ i.index }}</i>{{ i.title }}</a>
-          <span>{{ i.hot }}</span>
-        </div>
-      </section>
-      <div class="loading-pn flex flex-col space-y-3" :class="{ active: item.data.length < 1 }">
+      <!-- WCAG: 使用有序列表呈现条目 -->
+      <ol class="list" :class="{ active: item.data.length > 0 }">
+        <li class="main-item" v-for="i in item.data" :key="i.index">
+          <a :href="i.url" target="_blank" rel="noopener noreferrer">
+            <span class="rank-badge" :class="'rank-' + i.index">{{ i.index }}</span>
+            {{ i.title }}
+          </a>
+          <span class="hot-value" aria-label="热度 {{ i.hot }}">{{ i.hot }}</span>
+        </li>
+      </ol>
+      <div class="loading-pn" :class="{ active: item.data.length < 1 }" aria-hidden="true">
         <div class="space-y-2">
           <Skeleton class="h-4 w-[100%]" />
           <Skeleton class="h-4 w-[80%]" />
@@ -29,8 +33,9 @@
     </main>
     <footer :class="{ active: item.data.length > 0 }">
       <span>{{ item.updateStr }}</span>
-      <Button class="refresh" variant="outline" size="icon" @click="emit('refreshFn', item)">
-        <UpdateIcon />
+      <Button class="refresh" variant="outline" size="icon" @click="emit('refreshFn', item)"
+        :aria-label="'刷新' + item.name + '热榜'">
+        <UpdateIcon aria-hidden="true" />
       </Button>
     </footer>
   </section>
