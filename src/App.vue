@@ -35,15 +35,9 @@
               </a>
             </div>
             <div class="announcement-body">
-              <p class="announcement-connector">
-                <span class="connector-dot" aria-hidden="true"></span>
+              <p>
                 今日热榜是聚合热榜热搜平台，汇集了各大网站的热榜信息，包括微博热搜、今日头条、知乎日报、澎湃新闻、虎扑步行街、36氪、哔哩哔哩热榜，知乎、IT资讯、虎嗅网、人人都是产品经理、百度、抖音热点豆瓣小组精选等。
               </p>
-            </div>
-            <div class="announcement-footer">
-              <span class="line-dot"></span>
-              <span class="line-dot"></span>
-              <span class="line-dot"></span>
             </div>
           </div>
         </aside>
@@ -54,7 +48,6 @@
       </main>
 
       <footer role="contentinfo">
-        <div class="footer-divider"><span></span></div>
         <p><img src="./assets/svg/ing.svg" alt="" /></p>
         <p>
           <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer"><img src="./assets/svg/framework.svg" alt="Cloudflare Pages" /></a>

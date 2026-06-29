@@ -1,279 +1,149 @@
 @import url('./font.less');
 
 .www_vvhan_com {
-  position: relative;
-  z-index: 1;
-  padding: 68px 0 0;
+  position: relative; z-index: 1;
+  padding: 64px 0 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1720px;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; max-width: 1720px;
 
-  /* ===== Header: 白底 + 底部描边 ===== */
+  /* ===== Header ===== */
   & > header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 56px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--stroke-border);
+    position: fixed; left: 0; top: 0; width: 100%; height: 56px; z-index: 6;
+    background: var(--uf-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--uf-glass-border);
+    box-shadow: var(--uf-glass-shadow);
     font-family: 'HarmonyOS Sans SC', sans-serif !important;
-    z-index: 6;
 
     .header-inner {
       box-sizing: border-box;
-      padding: 0 20px;
+      padding: 0 var(--uf-space-xl);
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      max-width: 1666px;
-      height: 100%;
+      display: flex; align-items: center;
+      width: 100%; max-width: 1666px; height: 100%;
 
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--stroke-black);
-        letter-spacing: 0.04em;
-
-        .logo-line-icon { flex-shrink: 0; }
+        display: flex; align-items: center; gap: var(--uf-space-sm);
+        font-size: 16px; font-weight: 600; color: var(--uf-black);
+        letter-spacing: 0.02em;
+        svg { flex-shrink: 0; }
       }
 
       & > h2 {
         margin-left: auto;
-        font-size: 12px;
-        font-weight: 400;
-        color: var(--stroke-gray);
-        letter-spacing: 0.06em;
+        font-size: 14px; font-weight: 400; color: var(--uf-gray-500);
       }
 
       .theme-toggle {
-        margin-left: 12px;
-        width: 34px;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--stroke-border);
-        background: transparent;
-        cursor: pointer;
+        margin-left: var(--uf-space-md);
+        width: 34px; height: 34px;
+        display: flex; align-items: center; justify-content: center;
+        border: 1px solid var(--uf-gray-300); background: transparent;
+        cursor: pointer; border-radius: var(--uf-radius-sm);
         transition: border-color 0.15s;
-
-        & > svg { width: 16px; height: 16px; color: var(--stroke-dark); }
-        &:hover { border-color: var(--stroke-dark); }
+        svg { width: 16px; height: 16px; color: var(--uf-gray-700); }
+        &:hover { border-color: var(--uf-gray-700); }
       }
     }
   }
 
   /* ===== Main ===== */
   & > main {
-    flex: 1;
-    box-sizing: border-box;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+    flex: 1; box-sizing: border-box;
+    padding: var(--uf-space-xl);
+    display: flex; flex-direction: column;
     width: 100%;
 
-    /* ===== 公告板块：描边风格 ===== */
+    /* ===== Announcement Card ===== */
     .announcement-section {
-      margin: 16px 0 32px;
+      margin: var(--uf-space-lg) 0 32px;
       width: 100%;
 
       .announcement-card {
-        position: relative;
-        padding: 20px 24px 16px;
-        border: 1px solid var(--stroke-border);
-        background: var(--stroke-card);
+        padding: var(--uf-space-lg) var(--uf-space-xl);
+        border-radius: var(--uf-radius);
+        background: var(--uf-glass);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--uf-glass-border);
+        box-shadow: var(--uf-shadow), var(--uf-glass-shadow);
       }
 
       .announcement-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
-        border-bottom: 1px dashed var(--stroke-light);
+        display: flex; align-items: center; gap: var(--uf-space-sm);
+        margin-bottom: var(--uf-space-md);
+        padding-bottom: var(--uf-space-md);
+        border-bottom: 1px solid var(--uf-gray-200);
 
-        .announcement-icon {
-          width: 18px; height: 18px;
-          color: var(--stroke-gray);
-          flex-shrink: 0;
-        }
+        .announcement-icon { width: 18px; height: 18px; color: var(--uf-brand); flex-shrink: 0; }
 
         .announcement-title {
           margin: 0;
           font-family: 'HarmonyOS Sans SC Black', sans-serif !important;
-          font-size: 17px;
-          font-weight: 700;
-          color: var(--stroke-black);
-          letter-spacing: 0.03em;
+          font-size: 17px; font-weight: 700; color: var(--uf-black);
         }
 
         .announcement-link {
-          margin-left: auto;
-          font-size: 12px;
-          padding: 2px 10px;
-          border: 1px solid var(--stroke-border);
-          color: var(--stroke-accent);
-          text-decoration: none;
-          letter-spacing: 0.03em;
-          transition: background 0.12s, border-color 0.12s;
+          font-size: 13px; font-weight: 600;
+          padding: 3px var(--uf-space-sm);
+          border: 1.5px solid var(--uf-gray-300);
+          border-radius: var(--uf-radius-sm);
+          color: var(--uf-brand); text-decoration: none;
+          transition: background 0.15s, border-color 0.15s;
+          white-space: nowrap;
 
-          &:hover {
-            background: var(--stroke-accent-light);
-            border-color: var(--stroke-accent);
-          }
-          &:focus-visible {
-            outline: 2px solid var(--stroke-accent);
-            outline-offset: 2px;
-          }
+          &:hover { background: var(--uf-brand-light); border-color: var(--uf-brand); }
         }
       }
 
       .announcement-body {
-        font-size: 14px;
-        line-height: 1.7;
-        color: #444;
-
-        .announcement-connector {
-          margin: 0;
-          padding-left: 16px;
-          position: relative;
-
-          .connector-dot {
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 6px; height: 6px;
-            border: 1.5px solid var(--stroke-accent);
-            border-radius: 50%;
-            background: transparent;
-          }
-        }
-      }
-
-      .announcement-footer {
-        margin-top: 10px;
-        display: flex;
-        gap: 6px;
-        justify-content: flex-end;
+        font-size: 15px; line-height: 1.7; color: var(--uf-gray-900);
+        p { margin: 0; }
       }
     }
 
-    /* ===== 热榜网格 ===== */
+    /* ===== Grid ===== */
     & > section.hotlist {
-      box-sizing: border-box;
-      flex: 1;
+      box-sizing: border-box; flex: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      width: 100%;
-      height: max-content;
+      gap: var(--uf-space-xl);
+      width: 100%; height: max-content;
       outline: none;
     }
   }
 
   /* ===== Footer ===== */
   & > footer {
+    margin-top: 24px;
     box-sizing: border-box;
-    padding: 32px 0 20px;
-    display: flex;
-    flex-direction: column;
+    padding: 24px 0 var(--uf-space-lg);
+    display: flex; flex-direction: column;
     width: 100%;
-
-    .footer-divider {
-      width: 100%;
-      height: 1px;
-      background: var(--stroke-border);
-      margin-bottom: 24px;
-
-      span {
-        display: block;
-        width: 60px;
-        height: 1px;
-        background: var(--stroke-accent);
-      }
-    }
+    border-top: 1px solid var(--uf-gray-200);
 
     & > p {
-      margin: 4px 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin: var(--uf-space-xs) 0;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: center; gap: var(--uf-space-sm);
 
       & > a {
-        display: flex;
-        align-items: center;
-        padding: 4px 8px;
-        border: 1px solid var(--stroke-border);
-        transition: border-color 0.12s;
+        display: flex; align-items: center;
+        padding: var(--uf-space-xs) var(--uf-space-sm);
+        border: 1px solid var(--uf-gray-200);
+        border-radius: var(--uf-radius-sm);
+        transition: border-color 0.15s;
         text-decoration: none;
-
-        &:hover { border-color: var(--stroke-accent); }
+        &:hover { border-color: var(--uf-brand); }
         & > img { height: 16px; max-height: 16px; width: auto; object-fit: contain; }
       }
     }
   }
 }
 
-// ===== 暗黑模式 =====
-.dark .www_vvhan_com {
-  & > header {
-    background: rgba(20,20,22,0.92);
-    border-bottom-color: #333;
-
-    .header-inner {
-      .logo { color: #ddd; }
-      & > h2 { color: #777; }
-      .theme-toggle {
-        border-color: #444;
-        & > svg { color: #aaa; }
-        &:hover { border-color: #888; }
-      }
-    }
-  }
-
-  & > main {
-    .announcement-section {
-      .announcement-card { background: #1a1a1e; border-color: #333; }
-
-      .announcement-header {
-        border-bottom-color: #333;
-        .announcement-icon { color: #666; }
-        .announcement-title { color: #ccc; }
-        .announcement-link {
-          border-color: #444;
-          color: #60a5fa;
-          &:hover { background: rgba(37,99,235,0.1); border-color: #60a5fa; }
-        }
-      }
-
-      .announcement-body {
-        color: #999;
-        .announcement-connector .connector-dot { border-color: #60a5fa; }
-      }
-    }
-  }
-
-  & > footer {
-    .footer-divider { background: #333; span { background: #60a5fa; } }
-    & > p > a {
-      border-color: #333;
-      &:hover { border-color: #60a5fa; }
-    }
-  }
-}
-
-// ===== 响应式 =====
+/* ===== Responsive ===== */
 @media screen and (max-width: 1488px) {
   .www_vvhan_com > main > section.hotlist { grid-template-columns: repeat(3, 1fr); }
 }
